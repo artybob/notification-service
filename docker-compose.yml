@@ -1,0 +1,70 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: notification-nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - notification-network
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: notification-php
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - notification-network
+
+  mysql:
+    image: mysql:8.0
+    container_name: notification-mysql
+    environment:
+      MYSQL_DATABASE: notification_db
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_PASSWORD: secret
+      MYSQL_USER: notification
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - notification-network
+
+  redis:
+    image: redis:alpine
+    container_name: notification-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - notification-network
+
+  horizon:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: notification-horizon
+    command: php artisan horizon
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - redis
+      - mysql
+    networks:
+      - notification-network
+
+networks:
+  notification-network:
+    driver: bridge
+
+volumes:
+  mysql_data:
