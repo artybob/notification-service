@@ -24,6 +24,9 @@ services:
       - redis
     networks:
       - notification-network
+    environment:
+      COMPOSER_ALLOW_SUPERUSER: 0
+      COMPOSER_MEMORY_LIMIT: -1
 
   mysql:
     image: mysql:8.0
@@ -34,7 +37,7 @@ services:
       MYSQL_PASSWORD: secret
       MYSQL_USER: notification
     ports:
-      - "3306:3306"
+      - "33060:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -45,20 +48,6 @@ services:
     container_name: notification-redis
     ports:
       - "6379:6379"
-    networks:
-      - notification-network
-
-  horizon:
-    build:
-      context: ./docker/php
-      dockerfile: Dockerfile
-    container_name: notification-horizon
-    command: php artisan horizon
-    volumes:
-      - .:/var/www/html
-    depends_on:
-      - redis
-      - mysql
     networks:
       - notification-network
 
