@@ -5,4 +5,3 @@ parameters:
     excludePaths:
         - tests
         - database/migrations
-    checkMissingIterableValueType: false

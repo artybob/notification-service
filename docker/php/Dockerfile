@@ -23,6 +23,8 @@ RUN mkdir -p /var/www/html/storage /var/www/html/bootstrap/cache \
 
 RUN pecl install redis && docker-php-ext-enable redis
 
+RUN echo "memory_limit = 512M" > /usr/local/etc/php/conf.d/memory.ini
+
 WORKDIR /var/www/html
 
 USER www-data

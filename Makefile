@@ -45,8 +45,11 @@ setup: build up
 	docker compose exec php php artisan migrate --force
 	@echo "✅ Project ready at http://localhost:8080"
 
-phpstan:
-	docker compose exec php ./vendor/bin/phpstan analyse
+test:
+	docker compose exec php php -d memory_limit=512M artisan test
 
-pint:
-	docker compose exec php ./vendor/bin/pint
+test-unit:
+	docker compose exec php php artisan test --testsuite=Unit
+
+test-feature:
+	docker compose exec php php artisan test --testsuite=Feature
