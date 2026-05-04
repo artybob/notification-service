@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -13,8 +14,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $status
  * @property string|null $file_path
  * @property string|null $error_message
- * @property \Illuminate\Support\Carbon $created_at
- * @property \Illuminate\Support\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  */
 class Report extends Model
 {
@@ -23,7 +24,10 @@ class Report extends Model
     protected $fillable = ['user_id', 'start_date', 'end_date', 'status', 'file_path', 'error_message'];
 
     const STATUS_PENDING = 'pending';
+
     const STATUS_PROCESSING = 'processing';
+
     const STATUS_READY = 'ready';
+
     const STATUS_FAILED = 'failed';
 }
