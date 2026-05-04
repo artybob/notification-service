@@ -5,3 +5,6 @@ parameters:
     excludePaths:
         - tests
         - database/migrations
+
+includes:
+    - phpstan-baseline.neon

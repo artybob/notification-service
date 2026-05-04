@@ -53,3 +53,9 @@ test-unit:
 
 test-feature:
 	docker compose exec php php artisan test --testsuite=Feature
+
+pint:
+	docker compose exec php ./vendor/bin/pint
+
+phpstan:
+	docker compose exec php ./vendor/bin/phpstan analyse

@@ -13,8 +13,8 @@ class ChannelFactory
 
     public function __construct()
     {
-        $this->registerChannel(new EmailChannel());
-        $this->registerChannel(new TelegramChannel());
+        $this->registerChannel(new EmailChannel);
+        $this->registerChannel(new TelegramChannel);
     }
 
     public function registerChannel(NotificationChannelInterface $channel): void
@@ -24,7 +24,7 @@ class ChannelFactory
 
     public function getChannel(string $channelName): NotificationChannelInterface
     {
-        if (!isset($this->channels[$channelName])) {
+        if (! isset($this->channels[$channelName])) {
             throw new InvalidArgumentException("Channel '{$channelName}' is not supported");
         }
 

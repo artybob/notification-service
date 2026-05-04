@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\Notification;
-use App\Models\NotificationLog;
 use App\Services\NotificationService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -54,6 +53,7 @@ class SendNotificationJob implements ShouldQueue
                 'error_message' => $error,
             ]);
             Log::error("Notification {$this->notification->id} failed permanently: {$error}");
+
             return;
         }
 

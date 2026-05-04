@@ -4,6 +4,11 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property int $user_id
+ * @property string $channel
+ * @property string $message
+ */
 class StoreNotificationRequest extends FormRequest
 {
     public function authorize(): bool
@@ -17,14 +22,6 @@ class StoreNotificationRequest extends FormRequest
             'user_id' => 'required|integer',
             'channel' => 'required|string|in:email,telegram',
             'message' => 'required|string|max:500',
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'message.max' => 'The message cannot exceed 500 characters.',
-            'channel.in' => 'The channel must be email or telegram.',
         ];
     }
 }

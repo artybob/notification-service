@@ -5,6 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property string $channel
+ * @property string $message
+ * @property string $status
+ * @property string|null $error_message
+ * @property int $retry_count
+ * @property string|null $sent_at
+ * @property \Illuminate\Support\Carbon $created_at
+ * @property \Illuminate\Support\Carbon $updated_at
+ */
 class Notification extends Model
 {
     use HasFactory;

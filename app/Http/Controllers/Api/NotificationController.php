@@ -39,16 +39,25 @@ class NotificationController extends Controller
 
     public function userHistory(Request $request, int $userId)
     {
-        $query = Notification::where('user_id', $userId);
+        $query = Notification::query()->where('user_id', $userId);
 
         if ($request->has('status')) {
-            $query->where('status', $request->status);
+            $query->where('status', $request->input('status'));
         }
 
         if ($request->has('channel')) {
-            $query->where('channel', $request->channel);
+            $query->where('channel', $request->input('channel'));
         }
 
-        return NotificationResource::collection($query->paginate(20));
+        $notifications = $query->orderBy('created_at', 'desc')->paginate(20);
+
+        return response()->json([
+            'data' => $notifications->items(),
+            'meta' => [
+                'current_page' => $notifications->currentPage(),
+                'per_page' => $notifications->perPage(),
+                'total' => $notifications->total(),
+            ],
+        ]);
     }
 }

@@ -1,0 +1,85 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined static method App\\Models\\Report\:\:findOrFail\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 2
+			path: app/Http/Controllers/Api/ReportController.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$channel\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$created_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$error_message\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$message\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$status\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$updated_at\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Access to an undefined property App\\Http\\Resources\\NotificationResource\:\:\$user_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Http/Resources/NotificationResource.php
+
+		-
+			message: '#^Call to protected method increment\(\) of class Illuminate\\Database\\Eloquent\\Model\.$#'
+			identifier: method.protected
+			count: 1
+			path: app/Jobs/SendNotificationJob.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Notification\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Services/NotificationService.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Services/NotificationService.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Notification\:\:where\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Services/ReportService.php
+
+		-
+			message: '#^Call to an undefined static method App\\Models\\Report\:\:create\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Services/ReportService.php

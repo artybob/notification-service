@@ -10,7 +10,7 @@ class ChannelFactoryTest extends TestCase
 {
     public function test_get_valid_channel(): void
     {
-        $factory = new ChannelFactory();
+        $factory = new ChannelFactory;
 
         $emailChannel = $factory->getChannel('email');
         $this->assertEquals('email', $emailChannel->getName());
@@ -21,7 +21,7 @@ class ChannelFactoryTest extends TestCase
 
     public function test_get_invalid_channel_throws_exception(): void
     {
-        $factory = new ChannelFactory();
+        $factory = new ChannelFactory;
 
         $this->expectException(InvalidArgumentException::class);
         $factory->getChannel('invalid');

@@ -69,6 +69,7 @@ class ReportService
         foreach ($data as $channel => $stats) {
             $csv .= "{$channel},{$stats['total']},{$stats['sent']},{$stats['failed']}\n";
         }
+
         return $csv;
     }
 }

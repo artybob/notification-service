@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Jobs\GenerateReportJob;
 use App\Models\Report;
 use App\Services\ReportService;
-use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class ReportController extends Controller
@@ -58,11 +58,11 @@ class ReportController extends Controller
     {
         $report = Report::findOrFail($reportId);
 
-        if ($report->status !== Report::STATUS_READY || !$report->file_path) {
+        if ($report->status !== Report::STATUS_READY || ! $report->file_path) {
             abort(404, 'Report not ready');
         }
 
-        if (!Storage::exists($report->file_path)) {
+        if (! Storage::exists($report->file_path)) {
             abort(404, 'Report file not found');
         }
 

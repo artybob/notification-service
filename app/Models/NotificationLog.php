@@ -2,20 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @property int $id
+ * @property int $notification_id
+ * @property string $channel
+ * @property string $status
+ * @property string|null $response
+ * @property int $attempt
+ */
 class NotificationLog extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'notification_id', 'channel', 'status', 'response', 'attempt'
+        'notification_id', 'channel', 'status', 'response', 'attempt',
     ];
-
-    public function notification(): BelongsTo
-    {
-        return $this->belongsTo(Notification::class);
-    }
 }

@@ -15,16 +15,17 @@ class NotificationService
     public function __construct()
     {
         $this->channels = [
-            'email' => new EmailChannel(),
-            'telegram' => new TelegramChannel(),
+            'email' => new EmailChannel,
+            'telegram' => new TelegramChannel,
         ];
     }
 
     public function getChannel(string $name): NotificationChannelInterface
     {
-        if (!isset($this->channels[$name])) {
+        if (! isset($this->channels[$name])) {
             throw new InvalidArgumentException("Channel '{$name}' is not supported");
         }
+
         return $this->channels[$name];
     }
 

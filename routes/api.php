@@ -13,5 +13,5 @@ Route::prefix('notifications')->group(function () {
 Route::prefix('reports')->group(function () {
     Route::post('/generate', [ReportController::class, 'generate']);
     Route::get('/{reportId}/status', [ReportController::class, 'status']);
-    Route::get('/{reportId}/download', [ReportController::class, 'download']);
+    Route::get('/{reportId}/download', [ReportController::class, 'download'])->name('reports.download');
 });

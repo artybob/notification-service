@@ -16,7 +16,7 @@ class CreateNotificationRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer|exists:users,id',
-            'channel' => 'required|string|in:' . implode(',', Notification::getChannels()),
+            'channel' => 'required|string|in:'.implode(',', Notification::getChannels()),
             'message' => 'required|string|max:500',
         ];
     }
@@ -25,7 +25,7 @@ class CreateNotificationRequest extends FormRequest
     {
         return [
             'message.max' => 'Message cannot exceed 500 characters.',
-            'channel.in' => 'Invalid channel. Supported: ' . implode(', ', Notification::getChannels()),
+            'channel.in' => 'Invalid channel. Supported: '.implode(', ', Notification::getChannels()),
         ];
     }
 }

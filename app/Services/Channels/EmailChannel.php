@@ -9,7 +9,7 @@ class EmailChannel implements NotificationChannelInterface
 {
     public function send(int $userId, string $message): array
     {
-        Log::info("Sending email", ['user_id' => $userId, 'message' => $message]);
+        Log::info('Sending email', ['user_id' => $userId, 'message' => $message]);
 
         // Симулируем 10% ошибок для тестирования
         if (rand(1, 100) <= 10) {
